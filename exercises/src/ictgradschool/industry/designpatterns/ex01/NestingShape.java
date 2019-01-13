@@ -1,6 +1,7 @@
 package ictgradschool.industry.designpatterns.ex01;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class NestingShape extends Shape{
@@ -19,7 +20,7 @@ public class NestingShape extends Shape{
     // ===
     //instance variables
     private int x,y,deltaX,deltaY,width,height;
-    private List<Shape> childShapes;
+    private List<Shape> childShapes=new ArrayList<>();
 
     public NestingShape() {
         this.x = DEFAULT_X_POS;
@@ -102,34 +103,33 @@ public class NestingShape extends Shape{
     }
 
     public void remove(Shape child){
-        //todo
+        //todone
+        for (Shape shape : childShapes) {
+            if(child==shape){
+                childShapes.remove(shape);
+            }
+        }
 
     }
 
     public Shape shapeAt(int index){
-        //todo
-        Shape shape;
-
-        return shape;
+        //todone (probably?)
+        return childShapes.get(index);
     }
 
     public int shapeCount(){
-        //todo
-        int count =0;
-
-        return count;
+        //todone (again, probably)
+        return childShapes.size();
     }
 
     public int indexOf(Shape child){
-        //todo
-        int index;
-        return index;
+        //todone (again, probably)
+        return childShapes.indexOf(child);
     }
 
     public boolean contains(Shape child){
-        //todo
-        boolean contains;
-        return contains;
+        //todone (probably)
+        return childShapes.contains(child);
     }
 
     public void paint(Painter painter){
