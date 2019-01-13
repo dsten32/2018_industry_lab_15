@@ -42,6 +42,8 @@ public abstract class Shape {
 	protected int fWidth;
 
 	protected int fHeight;
+
+	protected NestingShape parent = null;
 	// ===
 
 	/**
@@ -112,11 +114,8 @@ public abstract class Shape {
 
 	//new code to add nested shape methods
 	public NestingShape parent(){
-		//todo
-
-		NestingShape parent=null;
-
-		return parent;
+		//todone?
+        return parent;
 	}
 
 	public List<Shape> path(){
