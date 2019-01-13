@@ -1,6 +1,9 @@
 package ictgradschool.industry.designpatterns.ex01;
 
+import jdk.nashorn.internal.ir.WhileNode;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -118,7 +121,19 @@ public abstract class Shape {
 
 	public List<Shape> path(){
 		List<Shape> path = new ArrayList<>();
-//todo
+		//todone (maybe)
+		//adds the calling shape to the list
+		path.add(this);
+		//gets the parent of the calling shape,
+		// while this is not null adds the
+		// successive parents to the list
+		Shape parent = this.parent();
+		while (parent.parent()!=null){
+			path.add(parent);
+			parent=parent.parent();
+		}
+		//reverses the list to the calling shape is last.
+		Collections.reverse(path);
 		return path;
 	}
 
