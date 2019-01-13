@@ -58,9 +58,10 @@ public class NestingShape extends Shape{
         this.height = height;
     }
 
+    @Override
     public void move(int width,int height){
         //moves the shape, not sure about child shapes yet
-        //Todo add child stuff, if any
+        //Todone (maybe) add child stuff
         int nextX = x + deltaX;
         int nextY = y + deltaY;
 
@@ -82,6 +83,11 @@ public class NestingShape extends Shape{
 
         x = nextX;
         y = nextY;
+
+        for (Shape shape : childShapes) {
+            shape.move(this.width,this.height);
+        }
+
     }
 
     public void add(Shape child) throws IllegalArgumentException{
@@ -132,6 +138,7 @@ public class NestingShape extends Shape{
         return childShapes.contains(child);
     }
 
+    @Override
     public void paint(Painter painter){
         //todone (i think) deal with children
         painter.setColor(Color.MAGENTA);//make the NestedShape magenta so it's obvious
