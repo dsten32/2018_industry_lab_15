@@ -1,5 +1,7 @@
 package ictgradschool.industry.designpatterns.ex01;
 
+import java.util.List;
+
 /**
  * Abstract superclass to represent the general concept of a ictgradschool.industry.designpatterns.ex01.Shape. This class
  * defines state common to all special kinds of ictgradschool.industry.designpatterns.ex01.Shape instances and implements
@@ -102,6 +104,13 @@ public abstract class Shape {
 
 		fX = nextX;
 		fY = nextY;
+	}
+
+	//new code to add nested shape methods
+	public NestingShape parent(){}
+
+	public List<Shape> path(){
+
 	}
 
 	/**
