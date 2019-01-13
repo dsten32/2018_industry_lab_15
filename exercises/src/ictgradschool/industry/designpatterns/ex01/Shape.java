@@ -1,5 +1,6 @@
 package ictgradschool.industry.designpatterns.ex01;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -107,10 +108,17 @@ public abstract class Shape {
 	}
 
 	//new code to add nested shape methods
-	public NestingShape parent(){}
+	public NestingShape parent(){
+		//todo
+		NestingShape parent=null;
+
+		return parent;
+	}
 
 	public List<Shape> path(){
-
+		List<Shape> path = new ArrayList<>();
+//todo
+		return path;
 	}
 
 	/**

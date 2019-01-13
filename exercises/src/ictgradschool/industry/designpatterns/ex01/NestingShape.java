@@ -1,5 +1,7 @@
 package ictgradschool.industry.designpatterns.ex01;
 
+import java.awt.*;
+
 public class NestingShape {
     // === Constants for default values. ===
     protected static final int DEFAULT_X_POS = 0;
@@ -54,41 +56,77 @@ public class NestingShape {
     }
 
     public void move(int width,int height){
+        //moves the shape, not sure about child shapes yet
+        //Todo add child stuff
+        int nextX = x + deltaX;
+        int nextY = y + deltaY;
 
+        if (nextX <= 0) {
+            nextX = 0;
+            deltaX = -deltaX;
+        } else if (nextX + this.width >= width) {
+            nextX = width - this.width;
+            deltaX = -deltaX;
+        }
+
+        if (nextY <= 0) {
+            nextY = 0;
+            deltaY = -deltaY;
+        } else if (nextY + this.height >= height) {
+            nextY = height - this.height;
+            deltaY = -deltaY;
+        }
+
+        x = nextX;
+        y = nextY;
     }
 
-    public void ad(Shape child){
+    public void add(Shape child) throws IllegalArgumentException{
+        //checks size of shape and throws exception if too big for the containing shape.
+        if(child.getWidth()>this.width || child.getHeight()>this.height){
+            throw new  IllegalArgumentException("Shape too big");
+        }
 
+        //todo need to add check if shape is already a child.
+
+        //todo then add shape to containing shape.
     }
 
     public void remove(Shape child){
+        //todo
 
     }
 
     public Shape shapeAt(int index){
+        //todo
         Shape shape;
 
         return shape;
     }
 
     public int shapeCount(){
+        //todo
         int count =0;
 
         return count;
     }
 
     public int indexOf(Shape child){
+        //todo
         int index;
         return index;
     }
 
     public boolean contains(Shape child){
+        //todo
         boolean contains;
         return contains;
     }
 
-    public void paint(Painter paint){
-
+    public void paint(Painter painter){
+        //todo deal with children
+        painter.setColor(Color.MAGENTA);//make the NestedShape magenta so it's obvious
+        painter.drawRect(x,y,width,height);
     }
 
 }
