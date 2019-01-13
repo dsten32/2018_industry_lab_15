@@ -1,8 +1,9 @@
 package ictgradschool.industry.designpatterns.ex01;
 
 import java.awt.*;
+import java.util.List;
 
-public class NestingShape {
+public class NestingShape extends Shape{
     // === Constants for default values. ===
     protected static final int DEFAULT_X_POS = 0;
 
@@ -18,6 +19,7 @@ public class NestingShape {
     // ===
     //instance variables
     private int x,y,deltaX,deltaY,width,height;
+    private List<Shape> childShapes;
 
     public NestingShape() {
         this.x = DEFAULT_X_POS;
@@ -87,9 +89,16 @@ public class NestingShape {
             throw new  IllegalArgumentException("Shape too big");
         }
 
-        //todo need to add check if shape is already a child.
+        //todone need to add check if shape is already a child.
+        for (Shape shape:childShapes
+             ) {
+            if(child==shape){
+                throw new IllegalArgumentException("Shape is already a child");
+            }
+        }
 
-        //todo then add shape to containing shape.
+        //todone then add shape to containing shape.
+        childShapes.add(child);
     }
 
     public void remove(Shape child){
@@ -124,9 +133,13 @@ public class NestingShape {
     }
 
     public void paint(Painter painter){
-        //todo deal with children
+        //todone (i think) deal with children
         painter.setColor(Color.MAGENTA);//make the NestedShape magenta so it's obvious
         painter.drawRect(x,y,width,height);
+        for (Shape shape:childShapes
+             ) {
+            shape.paint(painter);
+        }
     }
 
 }
