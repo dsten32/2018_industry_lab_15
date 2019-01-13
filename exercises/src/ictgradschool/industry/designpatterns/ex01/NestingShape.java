@@ -60,7 +60,7 @@ public class NestingShape extends Shape{
 
     public void move(int width,int height){
         //moves the shape, not sure about child shapes yet
-        //Todo add child stuff
+        //Todo add child stuff, if any
         int nextX = x + deltaX;
         int nextY = y + deltaY;
 
@@ -136,10 +136,14 @@ public class NestingShape extends Shape{
         //todone (i think) deal with children
         painter.setColor(Color.MAGENTA);//make the NestedShape magenta so it's obvious
         painter.drawRect(x,y,width,height);
+        //tanslate the painter coordinates to this shapes x,y.
+        painter.translate(this.x,this.y);
         for (Shape shape:childShapes
              ) {
             shape.paint(painter);
         }
+        //translate back again?
+        painter.translate(super.fX,super.fY);
     }
 
 }
