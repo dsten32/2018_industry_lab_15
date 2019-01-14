@@ -92,30 +92,26 @@ public class NestingShape extends Shape{
 
     public void add(Shape child) throws IllegalArgumentException{
         //checks size of shape and throws exception if too big for the containing shape.
-        if(child.getWidth()>this.width || child.getHeight()>this.height){
+        if(child.getWidth()+child.getX()>this.width || child.getHeight()+child.getY()>this.height){
             throw new  IllegalArgumentException("Shape too big");
         }
 
         //todone need to add check if shape is already a child.
-        for (Shape shape:childShapes
-             ) {
-            if(child==shape){
+
+            if(child.parent!=null){
                 throw new IllegalArgumentException("Shape is already a child");
             }
-        }
+
 
         //todone then add shape to containing shape.
         childShapes.add(child);
+        child.parent=this;
     }
 
     public void remove(Shape child){
         //todone
-        for (Shape shape : childShapes) {
-            if(child==shape){
-                childShapes.remove(shape);
-            }
-        }
-
+        childShapes.remove(child);
+        child.parent=null;
     }
 
     public Shape shapeAt(int index){
@@ -150,7 +146,7 @@ public class NestingShape extends Shape{
             shape.paint(painter);
         }
         //translate back again?
-        painter.translate(super.fX,super.fY);
+        painter.translate(-this.x,-this.y);
     }
 
 }

@@ -126,7 +126,7 @@ public abstract class Shape {
 		//gets the parent of the calling shape,
 		// while this is not null adds the
 		// successive parents to the list
-		Shape parent = this.parent();
+		Shape parent = this;
 		while (parent.parent()!=null){
 			path.add(parent);
 			parent=parent.parent();
