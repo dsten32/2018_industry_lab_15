@@ -21,6 +21,7 @@ import javax.swing.JPanel;
 import javax.swing.JTree;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
+import javax.swing.tree.TreeModel;
 
 /**
  * Simple GUI program to show an animation of shapes. Class ictgradschool.industry.designpatterns.ex01.AnimationViewer is a
@@ -74,6 +75,10 @@ public class Ex02AnimationViewer extends JPanel implements ActionListener {
 
 		// TODO Display the root shape in the provided JTree.
 		// HINT: Use the adapter pattern as shown in lectures.
+
+		TreeModel model=new TreeModelAdapter(root);
+		treeView.setModel(model);
+
 
 		// Start the animation.
 		timer.start();
